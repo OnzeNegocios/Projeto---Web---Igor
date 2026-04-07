@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Controle de Vendas</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="produtos-box">
+        <h3>Controle de Vendas:</h3>
+
+        <!-- PRODUTOS -->
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="19.90">
+            <span>Camiseta Regata</span>
+            <span>19,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="59.90">
+            <span>Camisa Social</span>
+            <span>59,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="119.90">
+            <span>Blusa</span>
+            <span>119,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="39.90">
+            <span>Pullover</span>
+            <span>39,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="99.90">
+            <span>Sapato</span>
+            <span>99,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="38.90">
+            <span>Calça</span>
+            <span>38,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="9.90">
+            <span>Meias</span>
+            <span>9,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="24.90">
+            <span>Luvas</span>
+            <span>24,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="329.90">
+            <span>Jaqueta</span>
+            <span>329,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="69.90">
+            <span>Bermuda</span>
+            <span>69,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="14.90">
+            <span>Chinelo</span>
+            <span>14,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+
+        <div class="produto">
+            <input type="checkbox" class="check" data-preco="6.90">
+            <span>Boné</span>
+            <span>6,90</span>
+            <input type="number" class="qtd" value="0" min="0">
+        </div>
+    </div>
+
+    <!-- PAGAMENTO -->
+    <div class="pagamento-box">
+        <h3>Forma de Pagamento:</h3>
+
+        <label>
+            <input type="radio" name="pagamento" value="avista"> À Vista
+        </label>
+
+        <label>
+            <input type="radio" name="pagamento" value="parcelado"> A Prazo
+        </label>
+
+        <label>Quantidade de Parcelas:</label>
+        <select id="parcelas">
+            <option value="">Selecione</option>
+            <option value="2">2x</option>
+            <option value="3">3x</option>
+            <option value="4">4x</option>
+            <option value="5">5x</option>
+        </select>
+
+        <button onclick="calcular()">Calcular</button>
+
+        <div id="resultado"></div>
+    </div>
+
+</div>
+
+<script>
+
+    function calcular() {
+    let checks = document.querySelectorAll(".check");
+    let qtds = document.querySelectorAll(".qtd");
+    let pagamento = document.querySelector('input[name="pagamento"]:checked');
+    let parcelas = parseInt(document.getElementById("parcelas").value);
+    let resultado = document.getElementById("resultado");
+
+    let total = 0;
+
+    checks.forEach((check, i) => {
+        if (check.checked) {
+            let preco = parseFloat(check.dataset.preco);
+            let qtd = parseInt(qtds[i].value);
+            total += preco * qtd;
+        }
+    });
+
+    if (total === 0) {
+        resultado.innerText = "Selecione produtos!";
+        return;
+    }
+
+    if (!pagamento) {
+        resultado.innerText = "Escolha a forma de pagamento!";
+        return;
+    }
+
+    // À vista
+    if (pagamento.value === "avista") {
+        let desconto = total * 0.085;
+        let final = total - desconto;
+
+        resultado.innerHTML = `
+            Total: R$ ${total.toFixed(2)} <br>
+            Desconto: R$ ${desconto.toFixed(2)} <br>
+            Total à vista: R$ ${final.toFixed(2)}
+        `;
+    }
+
+    // Parcelado
+    else {
+        if (!parcelas) {
+            resultado.innerText = "Selecione as parcelas!";
+            return;
+        }
+
+        let taxa = total * 0.06;
+        let adicional = 6.90 * parcelas;
+        let totalFinal = total + taxa + adicional;
+        let valorParcela = totalFinal / parcelas;
+
+        if (valorParcela < 10) {
+            resultado.innerText = "Parcela mínima de R$ 10,00!";
+            return;
+        }
+
+        resultado.innerHTML = `
+            Total: R$ ${total.toFixed(2)} <br>
+            Total com taxas: R$ ${totalFinal.toFixed(2)} <br>
+            ${parcelas}x de R$ ${valorParcela.toFixed(2)}
+        `;
+    }
+}
+
+</script>
+
+</body>
+</html>
