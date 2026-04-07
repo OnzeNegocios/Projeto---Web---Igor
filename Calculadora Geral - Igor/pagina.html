@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Calculadora Geral</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Calculadora Matemática</h1>
+
+<section class="box">
+
+<h2>Número Geral</h2>
+<input type="number" id="numero" placeholder="Digite um número">
+<button onclick="calcularOperacoes()">Calcular</button>
+<div id="resultado1"></div>
+
+<hr>
+
+<h2>Bhaskara</h2>
+<input type="number" id="a" placeholder="Valor de A">
+<input type="number" id="b" placeholder="Valor de B">
+<input type="number" id="c" placeholder="Valor de C">
+<button onclick="calcularBhaskara()">Calcular</button>
+<div id="resultado2"></div>
+
+<hr>
+
+<h2>Média de 4 números</h2>
+<input type="number" id="n1" placeholder="Número 1">
+<input type="number" id="n2" placeholder="Número 2">
+<input type="number" id="n3" placeholder="Número 3">
+<input type="number" id="n4" placeholder="Número 4">
+<button onclick="calcularMedia()">Calcular Média</button>
+<div id="resultado3"></div>
+
+</section>
+
+<script>
+
+function calcularOperacoes(){
+
+let valor = document.getElementById("numero").value
+
+if(valor === ""){
+    document.getElementById("resultado1").innerHTML = "Digite um número!"
+    return
+}
+
+let n = Number(valor)
+
+let resultado = `
+Dobro: ${n*2} <br>
+Triplo: ${n*3} <br>
+Quádruplo: ${n*4} <br>
+Quíntuplo: ${n*5} <br>
+Sêxtuplo: ${n*6} <br><br>
+
+Quadrado: ${n**2} <br>
+Cubo: ${n**3} <br>
+Quarta potência: ${n**4} <br>
+Quinta potência: ${n**5} <br>
+Sexta potência: ${n**6} <br><br>
+
+O número é: ${n % 2 == 0 ? "PAR" : "ÍMPAR"}
+`
+
+document.getElementById("resultado1").innerHTML = resultado
+
+}
+
+
+
+function calcularBhaskara(){
+
+let a = document.getElementById("a").value
+let b = document.getElementById("b").value
+let c = document.getElementById("c").value
+
+if(a === "" || b === "" || c === ""){
+    document.getElementById("resultado2").innerHTML =
+    "Preencha todos os valores!"
+    return
+}
+
+a = Number(a)
+b = Number(b)
+c = Number(c)
+
+let delta = (b*b) - (4*a*c)
+
+if(delta < 0){
+    document.getElementById("resultado2").innerHTML =
+    "Delta negativo. Não possui raízes reais."
+}else{
+
+    let x1 = (-b + Math.sqrt(delta)) / (2*a)
+    let x2 = (-b - Math.sqrt(delta)) / (2*a)
+
+    document.getElementById("resultado2").innerHTML =
+    `Delta: ${delta} <br> X1 = ${x1} <br> X2 = ${x2}`
+}
+
+}
+
+
+
+function calcularMedia(){
+
+let n1 = document.getElementById("n1").value
+let n2 = document.getElementById("n2").value
+let n3 = document.getElementById("n3").value
+let n4 = document.getElementById("n4").value
+
+if(n1 === "" || n2 === "" || n3 === "" || n4 === ""){
+    document.getElementById("resultado3").innerHTML =
+    "Preencha todos os números!"
+    return
+}
+
+n1 = Number(n1)
+n2 = Number(n2)
+n3 = Number(n3)
+n4 = Number(n4)
+
+let media = (n1+n2+n3+n4)/4
+
+document.getElementById("resultado3").innerHTML =
+"Média = " + media
+
+}
+
+</script>
+
+</body>
+</html>
