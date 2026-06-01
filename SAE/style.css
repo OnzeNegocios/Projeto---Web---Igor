@@ -1,0 +1,113 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #e9ecef;
+    color: #000;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 20px;
+}
+
+h3 {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+form {
+    background-color: #ffffff;
+    border: 1px solid #000;
+    padding: 15px;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+input[type="text"],
+input[type="number"] {
+    border: 1px solid #000;
+    padding: 4px;
+    margin-top: 3px;
+    margin-bottom: 10px;
+    width: 100%;
+    font-size: 13px;
+}
+
+button {
+    border: 1px solid #000;
+    background-color: #dcdcdc;
+    padding: 4px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #c0c0c0;
+}
+
+input[type="submit"] {
+    border: 1px solid #000;
+    background-color: #dcdcdc;
+    padding: 6px;
+    width: 100%;
+    cursor: pointer;
+}
+
+input[type="submit"]:hover {
+    background-color: #c0c0c0;
+}
+
+fieldset {
+    border: 1px solid #000;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #f8f8f8;
+}
+
+legend {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 13px;
+    background-color: #fff;
+}
+
+th {
+    border: 1px solid #000;
+    background-color: #dcdcdc;
+    padding: 6px;
+    text-align: center;
+}
+
+td {
+    border: 1px solid #000;
+    padding: 5px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f5f5f5;
+}
+.Aprovado {
+    color: #006400;
+    font-weight: bold;
+}
+
+.Recuperação {
+    color: #b8860b;
+    font-weight: bold;
+}
+
+.Reprovado {
+    color: #8b0000;
+    font-weight: bold;
+}
+
+h3 + br {
+    margin-bottom: 5px;
+}

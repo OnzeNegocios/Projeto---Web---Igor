@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>Cadastro de Turma</title>
+<link rel="stylesheet" href="style.css">
+
+<script>
+function gerarCampos() {
+    let qtd = document.getElementById("qtd").value;
+    let container = document.getElementById("alunos");
+    container.innerHTML = "";
+
+    for (let i = 0; i < qtd; i++) {
+        container.innerHTML += `
+            <fieldset>
+                <legend>Aluno ${i+1}</legend>
+
+                Nome: <input type="text" name="nome[]" required><br>
+
+                Nota Prova 1:
+                <input type="number" name="p1[]" step="0.1" min="0" max="10" required><br>
+
+                Nota Prova 2:
+                <input type="number" name="p2[]" step="0.1" min="0" max="10" required><br>
+
+                Nota Trabalho:
+                <input type="number" name="trab[]" step="0.1" min="0" max="10" required><br>
+
+            </fieldset><br>
+        `;
+    }
+}
+</script>
+
+</head>
+<body>
+
+<h2>Cadastro da Turma</h2>
+
+<form action="index.php" method="post">
+
+    Nome da Turma:
+    <input type="text" name="turma" required><br><br>
+
+    Quantidade de Alunos:
+    <input type="number" id="qtd" name="qtd" required>
+    <button type="button" onclick="gerarCampos()">Gerar</button>
+
+    <div id="alunos"></div>
+
+    <br>
+    <input type="submit" value="Processar Dados">
+
+</form>
+
+</body>
+</html>
