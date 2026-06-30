@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRUD Mundo - Início</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="topo">
+    <h1> CRUD Mundo</h1>
+    <nav class="menu">
+      <a href="index.html" class="ativo">Início</a>
+      <a href="continentes.html">Continentes</a>
+      <a href="paises.html">Países</a>
+      <a href="cidades.html">Cidades</a>
+      <a href="governantes.html">Governantes</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="cartao">
+      <h2>Bem-vindo(a)</h2>
+      <p>
+        Este sistema permite gerenciar informações geográficas do mundo: continentes,
+        países, cidades e seus respectivos governantes. Utilize o menu acima para
+        navegar entre os cadastros.
+      </p>
+    </section>
+
+    <section class="cartao">
+      <h2> Estatísticas</h2>
+      <div id="alerta-estatisticas"></div>
+
+      <h3>Cidades cadastradas por continente</h3>
+      <div id="estatistica-continentes" class="cartoes-estatisticas">
+        <p class="vazio">Carregando...</p>
+      </div>
+
+      <h3 style="margin-top: 1.5rem;">Cidade mais populosa de um país</h3>
+      <div class="campo" style="max-width: 320px;">
+        <label for="select-pais-estatistica">Selecione um país</label>
+        <select id="select-pais-estatistica"></select>
+      </div>
+      <div id="estatistica-cidade-populosa" class="estatistica" style="margin-top: 0.8rem;">
+        <span class="vazio">Selecione um país para ver a cidade mais populosa.</span>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    Projeto CRUD Mundo - Programação Web | Etec / Centro Paula Souza
+  </footer>
+
+  <script src="js/api.js"></script>
+  <script src="js/index.js"></script>
+</body>
+</html>
