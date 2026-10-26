@@ -3,28 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>CRUD Mundo - Governantes</title>
+  <title>CRUD Mundo - Cidades</title>
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
   <header class="topo">
-    <h1> CRUD Mundo</h1>
+    <h1></h1> CRUD Mundo</h1>
     <nav class="menu">
-      <a href="index.html">Início</a>
-      <a href="continentes.html">Continentes</a>
-      <a href="paises.html">Países</a>
-      <a href="cidades.html">Cidades</a>
-      <a href="governantes.html" class="ativo">Governantes</a>
+      <a href="index.php" 
+      <a href="continentes.php">Continentes</a>
+      <a href="paises.php">Países</a>
+      <a href="cidades.php" class="ativo">Cidades</a>
+      <a href="governantes.php">Governantes</a>
     </nav>
   </header>
 
   <main>
     <section class="cartao">
-      <h2 id="titulo-formulario">Cadastrar Governante</h2>
+      <h2 id="titulo-formulario">Cadastrar Cidade</h2>
       <div id="alerta-formulario"></div>
 
-      <form id="form-governante" class="formulario" novalidate>
-        <input type="hidden" id="id_governante" name="id_governante" />
+      <form id="form-cidade" class="formulario" novalidate>
+        <input type="hidden" id="id_cidade" name="id_cidade" />
 
         <div class="campo largo">
           <label for="nome">Nome <span class="obrigatorio">*</span></label>
@@ -33,27 +33,36 @@
         </div>
 
         <div class="campo">
-          <label for="partido_politico">Partido Político</label>
-          <input type="text" id="partido_politico" name="partido_politico" maxlength="150" />
-          <span class="erro-campo" data-erro-para="partido_politico"></span>
+          <label for="id_pais">País <span class="obrigatorio">*</span></label>
+          <select id="id_pais" name="id_pais" required></select>
+          <span class="erro-campo" data-erro-para="id_pais"></span>
         </div>
 
         <div class="campo">
-          <label for="data_nascimento">Data de Nascimento</label>
-          <input type="date" id="data_nascimento" name="data_nascimento" />
-          <span class="erro-campo" data-erro-para="data_nascimento"></span>
+          <label for="id_governante">Governante</label>
+          <select id="id_governante" name="id_governante">
+            <option value="">Nenhum</option>
+          </select>
         </div>
 
         <div class="campo">
-          <label for="data_inicio_mandato">Início do Mandato</label>
-          <input type="date" id="data_inicio_mandato" name="data_inicio_mandato" />
-          <span class="erro-campo" data-erro-para="data_inicio_mandato"></span>
+          <label for="populacao">População</label>
+          <input type="number" id="populacao" name="populacao" min="0" />
         </div>
 
         <div class="campo">
-          <label for="data_fim_mandato">Fim do Mandato</label>
-          <input type="date" id="data_fim_mandato" name="data_fim_mandato" />
-          <span class="erro-campo" data-erro-para="data_fim_mandato"></span>
+          <label for="area">Área (km²)</label>
+          <input type="number" id="area" name="area" min="0" step="0.01" />
+        </div>
+
+        <div class="campo">
+          <label for="clima">Clima</label>
+          <input type="text" id="clima" name="clima" maxlength="100" />
+        </div>
+
+        <div class="campo">
+          <label for="data_fundacao">Data de Fundação</label>
+          <input type="date" id="data_fundacao" name="data_fundacao" />
         </div>
 
         <div class="acoes-formulario">
@@ -64,25 +73,28 @@
     </section>
 
     <section class="cartao">
-      <h2>Governantes Cadastrados</h2>
+      <h2>Cidades Cadastradas</h2>
       <div id="alerta-lista"></div>
 
       <div class="barra-acoes">
-        <input type="text" id="campo-busca" class="busca" placeholder="Pesquisar governante pelo nome..." />
+        <input type="text" id="campo-busca" class="busca" placeholder="Pesquisar cidade pelo nome..." />
+        <select id="filtro-pais">
+          <option value="">Todos os países</option>
+        </select>
       </div>
 
       <table>
         <thead>
           <tr>
             <th>Nome</th>
-            <th>Partido</th>
-            <th>Idade</th>
-            <th>Início do Mandato</th>
-            <th>Fim do Mandato</th>
+            <th>País</th>
+            <th>População</th>
+            <th>Governante</th>
+            <th>Fundação</th>
             <th>Ações</th>
           </tr>
         </thead>
-        <tbody id="tabela-governantes">
+        <tbody id="tabela-cidades">
           <tr><td colspan="6" class="vazio">Carregando...</td></tr>
         </tbody>
       </table>
@@ -106,6 +118,6 @@
 
   <script src="js/api.js"></script>
   <script src="js/validacao.js"></script>
-  <script src="js/governantes.js"></script>
+  <script src="js/cidades.js"></script>
 </body>
 </html>

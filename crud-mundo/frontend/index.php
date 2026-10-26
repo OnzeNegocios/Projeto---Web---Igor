@@ -10,11 +10,12 @@
   <header class="topo">
     <h1> CRUD Mundo</h1>
     <nav class="menu">
-      <a href="index.html" class="ativo">Início</a>
-      <a href="continentes.html">Continentes</a>
-      <a href="paises.html">Países</a>
-      <a href="cidades.html">Cidades</a>
-      <a href="governantes.html">Governantes</a>
+      <a href="index.php" class="ativo">Início</a>
+      <a href="continentes.php">Continentes</a>
+      <a href="paises.php">Países</a>
+      <a href="cidades.php">Cidades</a>
+      <a href="governantes.php">Governantes</a>
+      <a href="mapa.php">Mapa</a>
     </nav>
   </header>
 
